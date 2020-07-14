@@ -1,5 +1,4 @@
 import os
-from os import path
 import sys
 from PIL import Image
 
@@ -18,7 +17,7 @@ except IndexError:
 
 jpgs = os.listdir(jpg_path)
 
-if not path.isdir(png_path):
+if not os.path.isdir(png_path):
     os.mkdir(png_path)
 
 for convert_me in jpgs:
