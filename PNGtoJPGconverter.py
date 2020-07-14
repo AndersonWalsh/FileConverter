@@ -12,22 +12,19 @@ will be created.
 try:
     jpg_path = sys.argv[1]
     png_path = sys.argv[2]
-except IndexError as err:
+except IndexError:
     print("Two command line arguments, jpg path and png path, needed")
-    raise err
+    raise
 
 jpgs = os.listdir(jpg_path)
 
-# print(path.isdir(jpg_path))
+if not path.isdir(png_path):
+    os.mkdir(png_path)
 
 for convert_me in jpgs:
     img_path = jpg_path + '/' + convert_me
-    print(img_path)
     img = Image.open(img_path)
     convert_me = convert_me[:convert_me.find('.')]
     convert_me += '.png'
-    print(convert_me)
     img_path = png_path + '/' + convert_me
-    if not path.isdir(png_path):
-        os.mkdir(png_path)
     img.save(img_path, "png")
